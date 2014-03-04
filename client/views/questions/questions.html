@@ -9,15 +9,19 @@
             {{/each}}
         </div>
         <div class="col-lg-6">
+        {{#if editing}}
+            {{> editQuestionForm}}
+        {{else}}
             {{> newQuestionForm}}
+        {{/if}}
         </div>
     </div>
 </template>
 
 <template name="question">
-<div class="question-box clearfix">
+<div class="question-box clearfix {{selected}}">
         <div class="square pull-left">
-            <img src="http://placehold.it/50/{{randomColor}}/FFF&text=Q" alt="" class="" />
+            <img src="http://placehold.it/50/{{hashedColor question}}/FFF&text=Q" alt="" class="" />
         </div>
         <p>
             {{question}}
@@ -39,5 +43,20 @@
     </fieldset>
     <button type="submit" class="btn btn-primary insert">Add Question</button>
     {{/autoForm}}
+</template>
 
+<template name="editQuestionForm">
+    {{#autoForm schema=questionsCollection doc=selectedQuestion id="editQuestionForm"}}
+    <fieldset>
+        <legend>Add a question</legend>
+        <div class="form-group{{#if afFieldIsInvalid 'question'}} has-error{{/if}}">
+            {{afFieldLabel 'question'}}
+            {{afFieldInput 'question'}}
+            {{#if afFieldIsInvalid 'question'}}
+            <span class="help-block">{{afFieldMessage 'question'}}</span>
+            {{/if}}
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary update">Save Question</button>
+    {{/autoForm}}
 </template>
