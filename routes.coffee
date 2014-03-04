@@ -1,9 +1,9 @@
 Router.map ->
-  @route 'home',
+  @route 'questions',
+    template: 'questions',
     path: '/'
-
-  @route 'dashboard',
-    path: '/dashboard'
+    data: ->
+      questions: Questions.find()
 
   @route 'notFound',
     path: '*'

@@ -1,0 +1,23 @@
+<template name="questions">
+    <div class="container">
+        <div class="page-header">
+            <h1>Questions</h1>
+        </div>
+        <div class="col-lg-6 center-block">
+            {{#each questions}}
+            {{> question}}
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="question">
+<div class="question-box clearfix">
+        <div class="square pull-left">
+            <img src="http://placehold.it/50/{{randomColor}}/FFF&text=Q" alt="" class="" />
+        </div>
+        <p>
+            {{question}}
+        </p>
+    </div>
+</template>
