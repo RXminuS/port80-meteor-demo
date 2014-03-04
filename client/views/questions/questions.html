@@ -8,6 +8,9 @@
             {{> question}}
             {{/each}}
         </div>
+        <div class="col-lg-6">
+            {{> newQuestionForm}}
+        </div>
     </div>
 </template>
 
@@ -20,4 +23,21 @@
             {{question}}
         </p>
     </div>
+</template>
+
+<template name="newQuestionForm">
+    {{#autoForm schema=questionsCollection id="insertQuestionForm"}}
+    <fieldset>
+        <legend>Add a question</legend>
+        <div class="form-group{{#if afFieldIsInvalid 'question'}} has-error{{/if}}">
+            {{afFieldLabel 'question'}}
+            {{afFieldInput 'question'}}
+            {{#if afFieldIsInvalid 'question'}}
+            <span class="help-block">{{afFieldMessage 'question'}}</span>
+            {{/if}}
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary insert">Add Question</button>
+    {{/autoForm}}
+
 </template>
