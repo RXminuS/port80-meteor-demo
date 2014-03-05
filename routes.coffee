@@ -2,6 +2,10 @@ Router.map ->
   @route 'questions',
     template: 'questions',
     path: '/'
+    before: ->
+        AccountsEntry.signInRequired(@)
+        Session.set('selected-question',null)
+        this.subscribe('questions')
     data: ->
       questions: Questions.find()
 

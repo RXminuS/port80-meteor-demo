@@ -1,3 +1,3 @@
 Meteor.startup ->
   AccountsEntry.config
-    signupCode: null
+    signupCode: 'port80'
