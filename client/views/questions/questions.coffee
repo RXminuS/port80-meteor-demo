@@ -23,6 +23,8 @@ Handlebars.registerHelper 'questionsCollection', ->
     return Questions
 
 Template.question.events
+    'click button.remove': () ->
+        Session.set('selected-question', null)
     'click': () ->
         #Check if we are selecting the same one in which case we deselect
         if Session.equals('selected-question', this._id)

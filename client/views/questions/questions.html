@@ -9,23 +9,27 @@
             {{/each}}
         </div>
         <div class="col-lg-6">
-        {{#if editing}}
+            {{#if editing}}
             {{> editQuestionForm}}
-        {{else}}
+            {{else}}
             {{> newQuestionForm}}
-        {{/if}}
+            {{/if}}
         </div>
     </div>
 </template>
 
 <template name="question">
-<div class="question-box clearfix {{selected}}">
+    <div class="question-box clearfix {{selected}}">
         <div class="square pull-left">
             <img src="http://placehold.it/50/{{hashedColor question}}/FFF&text=Q" alt="" class="" />
         </div>
         <p>
             {{question}}
+            {{#autoForm schema=questionsCollection doc=this}}
+            <button type="submit" class="btn btn-danger remove pull-right"><span class="fa fa-trash-o"></span></button>
+            {{/autoForm}}
         </p>
+
     </div>
 </template>
 
